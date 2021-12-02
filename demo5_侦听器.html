@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>侦听器</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id='app'>
+		<p>Input you age:
+		    <input type="text" v-model='age'>
+		</p> 
+		<p>is adult:{{isAdult + ''}}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				age:0,
+				isAdult:false,
+			},
+			watch:{
+				age:function(newAge,oldAge){
+					console.log('newAge',newAge);
+					console.log('oldAge',oldAge);
+					this.wait();
+				}
+			},
+			methods:{
+				wait:function(){
+					setTimeout(()=>{
+						if(this.age >= 18){
+							this.isAdult = true;
+						}else{
+							this.isAdult = false;
+						}
+					},1000)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

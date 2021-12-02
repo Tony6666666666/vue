@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" http-equiv="refresh" content="2">
+	<meta name="viewport" content="width=device-width"> 
+	<title>Vue 案例：商城登陆页</title>
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id='app'>
+		<header class="top-nav">
+			<span class="top-nav-title">手机号注册/登录</span>
+		</header>
+		<input class="input-box" placeholder="请输入手机号">
+		<div class="sms-box">
+			<input class="input-box" placeholder="请输入短信验证码">
+			<div class="sms-right">
+				<button class="sms-right-btn">获取验证码</button>
+			</div>
+		</div>
+		<div class="login-box">
+			<button class="login-box-btn">手机号一键注册/登录</button>
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				canClickCode:true,
+			},
+			methods:{
+				getAuthCode:function(){
+					this.canClickCode = false
+				}
+			}
+		})
+	</script>
+</body>
+</html>

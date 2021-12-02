@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- <meta charset="UTF-8" http-equiv="refresh" content="2"> -->
+    <title>插值语法</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ 'Hello ' + name1 }}</div>
+        
+        <div>{{ 1 + 2 }}</div>
+        
+        <div>{{ true ? 'true':'false'}}</div>
+        
+        <!-- #直接输出 -->
+        <div v-text='name'></div>  
+        
+        <!-- #渲染 -->
+        <div v-html='name'></div>  
+        
+        <div><a v-bind:href="url">高级前端进阶</a></div>
+        <div><a :href="url">高级前端进阶</a></div>
+
+        <div><button v-on:click='handleClick'></button></div>
+        <div><button @click='handleClick'></button></div>
+        
+        <div>
+            <input type="text" v-model='inputMsg' placeholder="edit me">
+            <p>Message is :{{ inputMsg }}</p>
+        </div>
+        
+        <div v-if='age >= 18'>adult</div>
+        <div v-else>child</div>
+        
+        <div v-for='item in items'>
+            {{ item }}
+        </div>
+
+        <div v-once>{{ once }}</div>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                name1:'dyg',
+                name:'<h1>Muyiy</h1>',
+                url:'https://muyiy.cn',
+                inputMsg:'',
+                age:20,
+                items:[1,2,3],
+                once:'once',
+            },
+            methods:{
+                handleClick:function(){
+                    console.log('handleClick');
+                },
+            },
+        })
+    </script>
+</body>
+</html>

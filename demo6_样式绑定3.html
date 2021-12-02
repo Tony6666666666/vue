@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>样式绑定</title>
+	<script src="js/vue.js"></script>
+	<style>
+		.active{
+			border:1px solid black;
+			display:inline;
+			}
+			.error{
+				color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id='app'>
+		<div :style="[styleObj,overrideStyle]">Hello Style</div>
+
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				styleObj:{
+					color:'red',
+					fontSize:'20px',
+					'background-color':'orange',
+				},
+				overrideStyle:{
+				color:'green',
+				backgroundColor:'white',
+				}		
+			},
+		})
+	</script>
+</body>
+</html>

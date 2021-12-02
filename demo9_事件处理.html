@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件处理</title>
+	<script src="js/vue.js"></script>
+	
+</head>
+<body>
+	<div id='app'>
+		<button @click='addOne("type1",$event)'>Add One</button>
+		<button @click='addOne("type2")'>Add One</button>
+		<p>{{ number }}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				number:1,
+			},
+			methods:{
+				addOne:function(type,event){
+					this.number += 1;
+					console.log(type);
+					console.log(event);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

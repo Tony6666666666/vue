@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>父子间数据传递</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-counter :initial-count="2"></my-counter>
+
+	</div>
+	<script>
+		var myCounter = {
+			data:function() {
+				return {
+					counter:this.initialCount
+				}
+			},
+			props:['initialCount'],
+			template :'<div @click="handleClick">{{ counter }}</div>',
+			methods:{
+				handleClick(){
+					this.counter ++
+				}
+			}
+		}
+
+		new Vue({
+			el:'#app',
+			components:{
+				myCounter,
+			},
+			data:{}
+		})
+	</script>
+</body>
+</html>

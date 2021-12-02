@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- <meta charset="UTF-8" http-equiv="refresh" content="2"> -->
+    <title>计算属性和侦听器</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{ message }}</div>
+        <div>{{ num + 1 }}</div>
+        <div>{{ addOne() }}</div>
+        <div>{{ addOneComputed }}</div>
+        <div>{{ num }}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+               num : 1, 
+               message:'Hello Vue',   
+               watchNum:0,
+            },
+            methods:{
+                addOne:function(){
+                    console.log('addOne');
+                    return this.num + 1;
+                },
+            },
+            computed:{
+                addOneComputed:function(){
+                    console.log('addOneComputed');
+                    return this.num + 1;
+                },
+            },
+            watch:{
+                num:function(val,oldVal){
+                    this.watchNum = val + 1;
+                },
+            },
+        })
+    </script>
+</body>
+</html>

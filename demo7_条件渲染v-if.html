@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>条件渲染</title>
+	<script src="js/vue.js"></script>
+	
+</head>
+<body>
+	<div id='app'>
+		<div v-if="type=='vue'">
+			<h1>Title 1 </h1>
+			<p>Hello Vue</p>
+		</div>
+		<div v-else-if="type === 'world'">
+			<h1>Title 2</h1>
+			<p>Hello World</p>
+		</div>
+		<div v-else>
+			<h3>Title 3</h3>
+			<p>Nothing</p>
+		</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				type:'vue'
+			},
+		})
+	</script>
+</body>
+</html>
