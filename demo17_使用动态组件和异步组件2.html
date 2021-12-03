@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>使用动态组件和异步组件</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+
+		<div>
+
+			<keep-alive>
+				<component :is="current"></component>
+			</keep-alive>
+
+			<button @click="handleClick">
+				Change
+			</button>
+		</div>
+
+	</div>
+	<script>
+
+		Vue.component('component-a',{
+			template:'<div>' +
+					'<input placeholder="enter"></input' +
+					'</div>'
+		})
+
+		Vue.component('component-b',function(resolve,reject){
+			setTimeout(()=>{
+				resolve({
+					template:'<div>Component B</div>'
+				})
+			},2000)
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				current:'component-a'
+			},
+			methods:{
+				handleClick(){
+					this.current = this.current === 'component-a' ? 'component-b':'component-a'
+				}
+			},
+		})
+	</script>
+</body>
+</html>

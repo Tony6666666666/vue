@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>作用域插槽</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<todo-list :todos="todos">
+			<template v-slot="slotProps">
+				{{ slotProps.item.name }}
+				<span v-if="slotProps.item.done">done</span>
+			</template>
+
+			<template #footer>
+					This is footer
+			</template>
+		</todo-list>
+	</div>
+	<script>
+		var todoList = {
+			props:['todos'],
+			template:'<div>' +
+							'<div v-for="item in todos">' +
+								'<slot :item="item">{{ item.name }}</slot>' +
+								'<slot name="footer"></slot>' +
+							'</div>'+
+					  '</div>'
+		}
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				todos:[
+						{name:'工作一',
+							done:true
+					},
+						{name:'工作二',
+					},
+						{name:'工作三',
+					},
+						{name:'工作四',
+					},
+				]
+			},
+			components:{
+				todoList,
+			}
+		})
+	</script>
+</body>
+</html>

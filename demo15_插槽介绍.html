@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>插槽介绍</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-counter>
+			<template v-slot:header>
+				This is header
+			</template>
+
+			<template v-slot:default>
+				<h1>{{ counter }}</h1>
+			</template>
+
+			<template v-slot:footer>
+				This is footer
+			</template>
+
+		</my-counter>
+	</div>
+	<script>
+		var myCounter = {
+			// props:['counter'],
+			template:'<div>' +
+
+						'<header>' +
+							'<slot name="header"></slot>' +
+						'</header>' +
+
+						'<slot>--</slot>' +
+
+						'<footer>' +
+							'<slot name="footer"></slot>' +
+						'</footer>' +
+
+					'</div>',
+		}
+
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				counter:2,
+			},
+			components:{
+				myCounter
+			},
+		})
+	</script>
+</body>
+</html>

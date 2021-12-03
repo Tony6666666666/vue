@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>主键自定义事件</title>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-counter
+			:initial-counter.sync="counter">
+		</my-counter>
+		{{ counter }}
+	</div>
+	<script>
+		var myCounter = {
+			props:['initialCounter'],
+			// data:function(){
+			// 	return {
+			// 		counter:this.initialCounter
+			// 	}
+			// },
+			template:'<div @click="handleClick">{{ initialCounter }}</div>',
+			methods:{
+				handleClick() {
+					this.$emit('update:initialCounter',this.initialCounter += 1)
+				}
+			}
+		}
+		var vm = new Vue({
+			el: '#app',
+			data:function(){
+				return {
+					counter: 0
+				}
+			},
+			components:{
+				myCounter
+			},
+			// methods:{
+			// 	handleIncrease(value){
+			// 		this.counter = value
+			// 	}
+			// }
+		})
+	</script>
+</body>
+</html>
